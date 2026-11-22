@@ -177,9 +177,61 @@ def check_password():
     return True
 
   st.set_page_config(
-      page_title="3교대 간호사 근무표 자동화 포털",
-      page_icon="🏥",
-      layout="centered",
+      import streamlit as st
+
+# 1. 페이지 기본 설정 (가장 최상단에 위치해야 함)
+st.set_page_config(
+    page_title="근무표 자동화 시스템",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# 2. 상업용 웹페이지 스타일 커스텀 CSS
+custom_css = """
+<style>
+/* 전체 앱 배경 (은은한 모던 그라데이션) */
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+/* 상단 기본 헤더 투명화 및 불필요한 여백 축소 */
+[data-testid="stHeader"] {
+    background-color: rgba(0, 0, 0, 0);
+}
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* 사이드바 배경 및 경계선 스타일 */
+[data-testid="stSidebar"] {
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+}
+
+/* 일반 컨테이너(st.container(border=True))를 상업용 흰색 카드 형태로 변경 */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #edf2f7;
+    padding: 1.5rem;
+}
+
+/* 버튼 스타일 고도화 (둥근 모서리 및 호버 효과) */
+.stButton > button {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.stButton > button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+</style>
+"""
+
+st.markdown(custom_css, unsafe_allow_html=True)
   )
   inject_custom_css()
 
